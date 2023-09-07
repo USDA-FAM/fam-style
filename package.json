@@ -1,17 +1,20 @@
 {
   "name": "fam-style",
   "description": "Open Source CSS Framework of the USDA's FAM Design System",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "main": "index.js",
   "license": "SEE LICENSE in LICENSE.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/USDA-FAM/fam-style.git"
   },
+  "author": "USDA Forest Services - FAM",
   "contributors": [
     "Casey Hill <bignamehere@gmail.com> (https://github.com/bignamehere)"
   ],
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/USDA-FAM/fam-style/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
