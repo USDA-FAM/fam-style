@@ -1,0 +1,134 @@
+// scss-lint:disable EmptyRule
+
+.fam-btn-group {
+
+  & {
+    display: inline-flex;
+    width: auto;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  &--fill,
+  &--block {
+    display: flex;
+    width: 100%;
+  }
+
+  &--inline {
+    display: inline-flex;
+    width: auto;
+  }
+
+  @include breakpoint(S) {
+    &--fill\@s,
+    &--block\@s  { display: flex; width: 100%; }
+    &--inline\@s { display: inline-flex; width: auto; }
+  }
+  @include breakpoint(M) {
+    &--fill\@m,
+    &--block\@m  { display: flex; width: 100%; }
+    &--inline\@m { display: inline-flex; width: auto; }
+  }
+  @include breakpoint(L) {
+    &--fill\@l,
+    &--block\@l  { display: flex; width: 100%; }
+    &--inline\@l { display: inline-flex; width: auto; }
+  }
+  @include breakpoint(XL) {
+    &--fill\@xl,
+    &--block\@xl  { display: flex; width: 100%; }
+    &--inline\@xl { display: inline-flex; width: auto; }
+  }
+
+  &__item {
+
+    & {
+      @include fam-button;
+      @include fam-button(secondary);
+      display: flex;
+      justify-content: center;
+      flex: auto;
+    }
+
+    & + & {
+      margin-left: -1px;
+    }
+
+    // scss-lint:disable SelectorFormat
+    .fam-btn-group--small  & { @include fam-button(small);  }
+    .fam-btn-group--medium & { @include fam-button(medium); }
+    .fam-btn-group--large  & { @include fam-button(large);  }
+
+    @include breakpoint(S) {
+      .fam-btn-group--small\@s  & { @include fam-button(small);  }
+      .fam-btn-group--medium\@s & { @include fam-button(medium); }
+      .fam-btn-group--large\@s  & { @include fam-button(large);  }
+    }
+
+    @include breakpoint(M) {
+      .fam-btn-group--small\@m  & { @include fam-button(small);  }
+      .fam-btn-group--medium\@m & { @include fam-button(medium); }
+      .fam-btn-group--large\@m  & { @include fam-button(large);  }
+    }
+
+    @include breakpoint(L) {
+      .fam-btn-group--small\@l  & { @include fam-button(small);  }
+      .fam-btn-group--medium\@l & { @include fam-button(medium); }
+      .fam-btn-group--large\@l  & { @include fam-button(large);  }
+    }
+
+    @include breakpoint(XL) {
+      .fam-btn-group--small\@xl  & { @include fam-button(small);  }
+      .fam-btn-group--medium\@xl & { @include fam-button(medium); }
+      .fam-btn-group--large\@xl  & { @include fam-button(large);  }
+    }
+
+    &:focus:not([disabled]) {
+      z-index: 1;
+    }
+    &:active:not([disabled]) {
+      background-color: $color-fam-tertiary;
+      z-index: 1;
+    }
+
+    &:focus:not([disabled]) {}
+
+    &:active:not([disabled]) {
+      background-color: $button-primary-hover;
+      color: $button-primary-text;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: $radius-none;
+    }
+
+    &:first-child {
+      border-top-right-radius: $radius-none;
+      border-bottom-right-radius: $radius-none;
+    }
+
+    &:last-child {
+      border-top-left-radius: $radius-none;
+      border-bottom-left-radius: $radius-none;
+    }
+
+    &:only-child {
+      border-radius: $button-border-radius;
+    }
+
+    &--active {
+      @include fam-button(primary);
+      background-color: $color-fam-selection-bg;
+      color: $button-secondary-text;
+      .fam-btn-group & {
+        color: $button-secondary-text; // intentionall over-specific
+      }
+      &:hover:not([disabled]) {
+        color: $button-primary-text;
+      }
+    }
+
+  }
+
+}

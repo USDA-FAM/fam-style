@@ -1,0 +1,271 @@
+////////////////////////////////////////////////////////////////////////
+// Text Fields
+
+.fam-form-list {
+
+  @include reset-ul();
+
+  > * {
+
+    @include reset-li();
+    margin-top: $size-base;
+
+    > .fam-form-list {
+      margin-left: $size-medium;
+    }
+
+  }
+
+}
+
+// Mostly a straight copy of USWDS checkbox and radio elements,
+// with a few adjustments
+
+.fam-checkbox,
+.fam-radio {
+
+  // @include sr-only();
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+
+  &__other {
+    margin-top: $size-small;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .46s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+
+    .fam-radio:checked ~ &,
+    .fam-checkbox:checked ~ & {
+      visibility: visible;
+      max-height: ($size-base * 38);
+      opacity: 1;
+    }
+  }
+
+  .lt-ie9 & {
+    border-width: 0;
+    float: left;
+    margin: .4em .4em 0 0;
+    position: static;
+    width: auto;
+    opacity: 1;
+  }
+
+}
+
+.fam-checkbox +  label,
+.fam-radio + label,
+.fam-checkbox + [type="hidden"] + label,
+.fam-radio + [type="hidden"] + label {
+
+  $indent-amount: 1.7em;
+  cursor: pointer;
+  font-weight: $font-normal;
+  text-indent: -$indent-amount;
+  margin-left: $indent-amount;
+  margin-right: $size-default;
+  display: inline-block;
+  position: relative;
+
+}
+
+.fam-checkbox--solo +  label,
+.fam-radio--solo + label,
+.fam-checkbox--solo + [type="hidden"] + label,
+.fam-radio--solo + [type="hidden"] + label {
+  $indent-amount: 1em;
+  text-indent: -$indent-amount;
+  margin-left: $indent-amount;
+  margin-right: 0;
+}
+
+.fam-radio--solo + label,
+.fam-radio--solo + [type="hidden"] + label {
+  $indent-amount: 1.3em;
+  text-indent: -$indent-amount;
+  margin-left: $indent-amount + .05em;
+}
+
+
+.fam-checkbox + :not(label),
+.fam-radio + :not(label) {
+  &:before {
+    display: block;
+    background-color: $color-fam-tertiary-200;
+    padding: $size-default;
+    margin-bottom: $size-small;
+    content: 'CSS ERROR: checkbox or radio requires a <label> element immediately following it. Refer to fam Design System for guidance. ';
+    color: orangered;
+    border: 4px solid orangered;
+    font-size: $font-size-4;
+    font-weight: bold;
+  }
+}
+
+.fam-checkbox + label::before,
+.fam-radio + label::before,
+.fam-checkbox + [type="hidden"] + label::before,
+.fam-radio + [type="hidden"] + label::before {
+
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: 0 0 0 1px $form-checkbox-radio-outline-color;
+  content: '\a0';
+  display: inline-block;
+  height: 1.8rem;
+  line-height: .8;
+  margin-right: .6em;
+  text-indent: .15em;
+  vertical-align: .2em;
+  width: 1.8rem;
+  margin-left: .1rem;
+
+  .lt-ie9 & {
+    display: none;
+  }
+
+}
+
+.fam-radio:not(.fam-radio--solo) + label::before {
+  margin-left: 2px; // warning: magic number ¯\_(ツ)_/¯
+}
+
+.fam-checkbox--solo + label::before,
+.fam-radio--solo + label::before,
+.fam-checkbox--solo + [type="hidden"] + label::before,
+.fam-radio--solo + [type="hidden"] + label::before {
+  margin-right: 0;
+}
+
+.fam-checkbox + label::after,
+.fam-radio + label::after,
+.fam-checkbox + [type="hidden"] + label::after,
+.fam-radio + [type="hidden"] + label::after {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: -5px;
+  bottom: -2px;
+  width: 36px;
+}
+
+.fam-checkbox--solo + label::after,
+.fam-checkbox--solo + [type="hidden"] + label::after{
+  left: -18px;
+  top: 0;
+  bottom: 3px;
+  width: auto;
+  right: 0;
+}
+
+.fam-radio--solo + label::after,
+.fam-radio--solo + [type="hidden"] + label::after {
+  left: -25px;
+  top: 0;
+  bottom: 3px;
+  width: auto;
+  right: 2px;
+}
+
+.fam-radio + label::before,
+.fam-radio + [type="hidden"] + label::before {
+  box-shadow: 0 0 0 2px $color-white, 0 0 0 3px $form-checkbox-radio-outline-color;
+  height: 1.6rem;
+  width: 1.6rem;
+  border-radius: 100%;
+}
+
+.fam-checkbox:indeterminate + label::before,
+.fam-checkbox:checked + label::before,
+.fam-radio:checked + label::before,
+.fam-checkbox:indeterminate + [type="hidden"] + label::before,
+.fam-checkbox:checked + [type="hidden"] + label::before,
+.fam-radio:checked + [type="hidden"] + label::before {
+  background-color: $form-checkbox-radio-fill;
+  box-shadow: 0 0 0 1px $form-checkbox-radio-fill;
+}
+
+.fam-radio:checked + label::before,
+.fam-radio:checked + [type="hidden"] + label::before {
+  // scss-lint:disable all
+  box-shadow:
+    0 0 0 2px $color-white,
+    0 0 0 4px $form-checkbox-radio-fill
+  ;
+}
+
+.fam-radio:focus + label::before,
+.fam-radio:focus + [type="hidden"] +  label::before {
+  box-shadow:
+    0 0 0 3px $color-white,
+    0 0 0 6px $color-focus
+  ;
+}
+
+.fam-checkbox:checked + label::before,
+.fam-checkbox:checked + [type="hidden"] + label::before {
+  background-image: url('#{$image-path}/correct8.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.fam-checkbox:indeterminate + label::before,
+.fam-checkbox:indeterminate + [type="hidden"] + label::before {
+  background-image: url('#{$image-path}/dash.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.fam-checkbox:focus + label::before,
+.fam-checkbox:focus + [type="hidden"] + label::before {
+  outline: 3px solid $color-focus;
+  outline-offset: 4px;
+}
+
+.fam-checkbox:disabled + label,
+.fam-radio:disabled + label,
+.fam-checkbox:disabled + [type="hidden"] + label,
+.fam-radio:disabled + [type="hidden"] + label {
+  color: $form-text-color-disabled;
+  cursor: not-allowed;
+}
+
+.fam-checkbox:disabled + label::before,
+.fam-radio:disabled + label::before,
+.fam-checkbox:disabled + [type="hidden"] + label::before,
+.fam-radio:disabled + [type="hidden"] + label::before {
+  background-color: $form-disabled-bg-color--check-radio;
+  cursor: text;
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.fam-radio:disabled + label::before,
+.fam-radio:disabled + [type="hidden"] + label::before {
+  // scss-lint:disable all
+  box-shadow:
+    0 0 0 2px $form-disabled-bg-color--check-radio,
+    0 0 0 3px $form-checkbox-radio-outline-color
+  ;
+}
+
+.fam-radio:disabled:checked + label::before,
+.fam-radio:disabled:checked + [type="hidden"] + label::before {
+  background-color: $form-checkbox-radio-fill;
+  // scss-lint:disable all
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px $form-checkbox-radio-fill
+  ;
+  opacity: .3;
+}
+
+.fam-checkbox:disabled:checked + label::before,
+.fam-checkbox:disabled:checked + [type="hidden"] + label::before {
+  background-color: $form-checkbox-radio-fill;
+  box-shadow: 0 0 0 1px $form-checkbox-radio-fill;
+  opacity: .3;
+}

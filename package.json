@@ -1,0 +1,35 @@
+{
+  "name": "fam-style",
+  "description": "Open Source CSS Framework of the USDA's FAM Design System",
+  "version": "0.1.1",
+  "main": "index.js",
+  "license": "SEE LICENSE in LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/USDA-FAM/fam-style.git"
+  },
+  "contributors": [
+    "Casey Hill <bignamehere@gmail.com> (https://github.com/bignamehere)"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "fs": "^0.0.1-security",
+    "gh-pages": "^6.0.0",
+    "path": "^0.12.7",
+    "rollup-plugin-copy": "^3.5.0",
+    "sass": "^1.66.1",
+    "vite": "^4.4.5"
+  }
+}
